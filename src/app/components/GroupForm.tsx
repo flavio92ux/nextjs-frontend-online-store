@@ -1,7 +1,8 @@
-import DropDownSvg from "../assets/img/DropdownSvg"
-import LupaSvg from "../assets/img/LupaSvg"
+import DropDownSvg from '../assets/img/DropdownSvg'
+import LupaSvg from '../assets/img/LupaSvg'
+import { ICategory } from '../interfaces/ICategories'
 
-export function GroupForm() {
+export function GroupForm({ categories }: { categories: ICategory[] }) {
   return (
     <form>
       <div className='flex'>
@@ -20,7 +21,7 @@ export function GroupForm() {
           All categories{' '}
           <div className='w-2.5 h-2.5 ml-2.5'>
             <DropDownSvg />
-          </div> 
+          </div>
         </button>
         <div
           id='dropdown'
@@ -30,38 +31,16 @@ export function GroupForm() {
             className='py-2 text-sm text-gray-700 dark:text-gray-200'
             aria-labelledby='dropdown-button'
           >
-            <li>
-              <button
-                type='button'
-                className='inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-              >
-                Mockups
-              </button>
-            </li>
-            <li>
-              <button
-                type='button'
-                className='inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-              >
-                Templates
-              </button>
-            </li>
-            <li>
-              <button
-                type='button'
-                className='inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-              >
-                Design
-              </button>
-            </li>
-            <li>
-              <button
-                type='button'
-                className='inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-              >
-                Logos
-              </button>
-            </li>
+            {categories.map((category: ICategory) => (
+              <li key={category.id}>
+                <button
+                  type='button'
+                  className='inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                >
+                  {category.name}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
         <div className='relative w-full'>

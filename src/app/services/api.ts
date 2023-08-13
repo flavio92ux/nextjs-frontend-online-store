@@ -1,4 +1,4 @@
-import { AllCategories } from "../interfaces/allCategories"
+import { AllCategories } from "../interfaces/ICategories"
 import { ProductsFromCategoryAndQuery } from "../interfaces/productsFromCategoryAndQuery"
 
 export async function getCategories(): Promise<AllCategories[]> {

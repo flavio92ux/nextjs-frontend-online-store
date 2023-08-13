@@ -1,15 +1,15 @@
 import { GroupForm } from './components/GroupForm'
 import { getCategories } from './services/api'
-import { AllCategories } from './interfaces/allCategories';
+import { ICategory } from './interfaces/ICategories';
 
 export default async function Home() {
-  const data: AllCategories[] = await getCategories()
+  const allCategories: ICategory[] = await getCategories()
   return (
     <div>
       {/* <ul>
         {data.map((item: AllCategories) => <li key={item.id}>{item.name}</li>)}
       </ul> */}
-      <GroupForm />
+      <GroupForm categories={allCategories}  />
     </div>
   )
 }

@@ -6,9 +6,9 @@ export default async function Home() {
   const data: AllCategories[] = await getCategories()
   return (
     <div>
-      <ul>
+      {/* <ul>
         {data.map((item: AllCategories) => <li key={item.id}>{item.name}</li>)}
-      </ul>
+      </ul> */}
       <GroupForm />
     </div>
   )

@@ -1,3 +1,4 @@
+'use client'
 import DropDownSvg from '../assets/img/DropdownSvg'
 import LupaSvg from '../assets/img/LupaSvg'
 import { ICategory } from '../interfaces/ICategories'
@@ -6,14 +7,28 @@ export function GroupForm({ categories }: { categories: ICategory[] }) {
   return (
     <form>
       <div className='flex'>
-        <label
-          htmlFor='search-dropdown'
-          className='mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white'
+      <div
+      className="flex items-center justify-center mb-6"
+    >
+      <div className="inline-block relative w-[269px]">
+        <div className="flex border rounded border-cinza-secundario h-[32px]">
+          <select
+            className="w-full pl-4 leading-5 transition-colors cursor-pointer font-sans font-medium text-lg text-[#767676]"
+          >
+            {categories.map((category: ICategory) => <option key={category.id}>{category.name}</option>)}
+          </select>
+        </div>
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
         >
-          Your Email
-        </label>
-        <button
+          <DropDownSvg />
+        </div>
+      </div>
+    </div>
+
+        {/* <button
           id='dropdown-button'
+          onClick={handleOpen}
           data-dropdown-toggle='dropdown'
           className='flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600'
           type='button'
@@ -23,26 +38,29 @@ export function GroupForm({ categories }: { categories: ICategory[] }) {
             <DropDownSvg />
           </div>
         </button>
-        <div
-          id='dropdown'
-          className='z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700'
-        >
-          <ul
-            className='py-2 text-sm text-gray-700 dark:text-gray-200'
-            aria-labelledby='dropdown-button'
+        {open && (
+          <div
+            id='dropdown'
+            className='!flex-col flex-wrap z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700'
           >
-            {categories.map((category: ICategory) => (
-              <li key={category.id}>
-                <button
-                  type='button'
-                  className='inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-                >
-                  {category.name}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+            <ul
+              className='py-2 text-sm text-gray-700 dark:text-gray-200'
+              aria-labelledby='dropdown-button'
+            >
+              {categories.map((category: ICategory) => (
+                <li key={category.id}>
+                  <button
+                    type='button'
+                    className='inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                  >
+                    {category.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )} */}
+
         <div className='relative w-full'>
           <input
             type='search'

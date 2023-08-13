@@ -7,73 +7,86 @@ export function GroupForm({ categories }: { categories: ICategory[] }) {
   return (
     <form>
       <div className='flex'>
-      <div
-      className="flex items-center justify-center mb-6"
-    >
-      <div className="inline-block relative w-[269px]">
-        <div className="flex border rounded border-cinza-secundario h-[32px]">
-          <select
-            className="w-full pl-4 leading-5 transition-colors cursor-pointer font-sans font-medium text-lg text-[#767676]"
-          >
-            {categories.map((category: ICategory) => <option key={category.id}>{category.name}</option>)}
-          </select>
-        </div>
-        <div
-          className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-        >
-          <DropDownSvg />
-        </div>
-      </div>
-    </div>
-
-        {/* <button
-          id='dropdown-button'
-          onClick={handleOpen}
-          data-dropdown-toggle='dropdown'
-          className='flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600'
-          type='button'
-        >
-          All categories{' '}
-          <div className='w-2.5 h-2.5 ml-2.5'>
-            <DropDownSvg />
-          </div>
-        </button>
-        {open && (
-          <div
-            id='dropdown'
-            className='!flex-col flex-wrap z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700'
-          >
-            <ul
-              className='py-2 text-sm text-gray-700 dark:text-gray-200'
-              aria-labelledby='dropdown-button'
-            >
-              {categories.map((category: ICategory) => (
-                <li key={category.id}>
-                  <button
-                    type='button'
-                    className='inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+        <div className='flex items-center justify-center'>
+          <div className='inline-block w-[269px] bg-gray-100'>
+            <div className='flex rounded h-10'>
+              <select className='
+                w-full pl-4
+                text-sm
+                text-gray-900
+                bg-gray-50
+                focus:ring-blue-500 
+                focus:border-blue-500 
+                dark:bg-gray-700 
+                dark:border-l-gray-700  
+                dark:border-gray-600 
+                dark:placeholder-gray-400 
+                dark:text-white 
+                dark:focus:border-blue-500'>
+                {categories.map((category: ICategory) => (
+                  <option
+                    className='font-sans font-medium text-lg leading-5'
+                    key={category.id}
                   >
                     {category.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700'>
+              <DropDownSvg />
+            </div>
           </div>
-        )} */}
+        </div>
 
-        <div className='relative w-full'>
+        <div className='w-full'>
           <input
             type='search'
             id='search-dropdown'
-            className='block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500'
+            className='
+              block
+              p-2.5
+              w-full
+              text-sm
+              text-gray-900
+              bg-gray-50
+              rounded-r-lg 
+              border-l-gray-50 
+              border-gray-300 
+              focus:ring-blue-500 
+              focus:border-blue-500 
+              dark:bg-gray-700 
+              dark:border-l-gray-700  
+              dark:border-gray-600 
+              dark:placeholder-gray-400 
+              dark:text-white 
+              dark:focus:border-blue-500'
             placeholder='Search Mockups, Logos, Design Templates...'
             required
           />
           <button
             type='submit'
-            className='absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+            className='
+              absolute
+              top-0
+              right-0
+              p-2.5
+              text-sm
+              font-medium
+              text-white 
+              bg-blue-700 
+              rounded-r-lg 
+              border 
+              border-blue-700 
+              hover:bg-blue-800 
+              focus:ring-4 
+              focus:outline-none 
+              focus:ring-blue-300 
+              dark:bg-blue-600 
+              dark:hover:bg-blue-700 
+              dark:focus:ring-blue-800'
           >
-            <div className='w-4 h-4'>
+            <div className='w-4'>
               <LupaSvg />
             </div>
             <span className='sr-only'>Search</span>

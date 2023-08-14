@@ -6,10 +6,8 @@ interface IProductList {
 }
 
 export function ProductList({ products }: IProductList) {
-  console.log(products)
-
   return (
-    <div className="flex">
+    <div className="flex justify-center flex-wrap">
       {products.results.map((product) => <ProductCard key={product.id} product={product} />)}
     </div>
   )

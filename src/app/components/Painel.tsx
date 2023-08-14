@@ -3,7 +3,7 @@
 import { GroupForm } from "./GroupForm"
 import { ICategory } from '../interfaces/ICategories'
 import { IProducts } from "../interfaces/IProducts"
-import { SetStateAction, useState } from "react"
+import { useState } from "react"
 
 export function Painel({ categories }: { categories: ICategory[] }) {
   const [data, setData] = useState<IProducts | null>(null)

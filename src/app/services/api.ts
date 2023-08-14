@@ -1,7 +1,7 @@
-import { AllCategories } from "../interfaces/ICategories"
+import { ICategory } from "../interfaces/ICategories"
 import { ProductsFromCategoryAndQuery } from "../interfaces/productsFromCategoryAndQuery"
 
-export async function getCategories(): Promise<AllCategories[]> {
+export async function getCategories(): Promise<ICategory[]> {
   const response = await fetch('https://api.mercadolibre.com/sites/MLB/categories')
 
   const data = response.json()

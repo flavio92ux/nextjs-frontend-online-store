@@ -1,16 +1,45 @@
 'use client'
+import React, { FormEventHandler, useState } from 'react'
+import { getProductsFromCategoryAndQuery } from '../services/api'
 import DropDownSvg from '../assets/img/DropdownSvg'
 import LupaSvg from '../assets/img/LupaSvg'
 import { ICategory } from '../interfaces/ICategories'
 
-export function GroupForm({ categories }: { categories: ICategory[] }) {
+interface IGroupForm {
+  categories: ICategory[],
+  handleData: (data: string) => void
+}
+
+export function GroupForm({ categories, handleData }: IGroupForm) {
+  const [category, setCategory] = useState(categories[0].name)
+  const [query, setQuery] = useState('')
+
+  function handleCategory(event: React.ChangeEvent<HTMLSelectElement>) {
+    event.preventDefault()
+    setCategory(event.target.value)
+  }
+
+  function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
+    event.preventDefault()
+    setQuery(event.target.value)
+  }
+
+  async function fetchData(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    const data = await getProductsFromCategoryAndQuery(category, query)
+    handleData(JSON.stringify(data))
+  }
+
   return (
-    <form>
+    <form onSubmit={fetchData}>
       <div className='flex'>
         <div className='flex items-center justify-center'>
           <div className='inline-block w-[269px] bg-gray-100'>
             <div className='flex rounded h-10'>
-              <select className='
+              <select
+                onChange={handleCategory}
+                className='
                 w-full pl-4
                 text-sm
                 text-gray-900
@@ -43,6 +72,7 @@ export function GroupForm({ categories }: { categories: ICategory[] }) {
           <input
             type='search'
             id='search-dropdown'
+            onChange={handleInput}
             className='
               block
               p-2.5

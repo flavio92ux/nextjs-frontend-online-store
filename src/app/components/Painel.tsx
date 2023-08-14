@@ -16,8 +16,7 @@ export function Painel({ categories }: { categories: ICategory[] }) {
   return (
     <div>
       <GroupForm categories={categories} handleData={handleData}  />
-      { data && <ProductList products={data} />}
-      
+      { data && <ProductList products={data} />} 
     </div>
   )
 }

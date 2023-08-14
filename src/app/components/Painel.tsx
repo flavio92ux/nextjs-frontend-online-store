@@ -3,6 +3,7 @@
 import { GroupForm } from "./GroupForm"
 import { ICategory } from '../interfaces/ICategories'
 import { IProducts } from "../interfaces/IProducts"
+import { ProductList } from "./ProductList/ProductList"
 import { useState } from "react"
 
 export function Painel({ categories }: { categories: ICategory[] }) {
@@ -15,6 +16,8 @@ export function Painel({ categories }: { categories: ICategory[] }) {
   return (
     <div>
       <GroupForm categories={categories} handleData={handleData}  />
+      { data && <ProductList products={data} />}
+      
     </div>
   )
 }

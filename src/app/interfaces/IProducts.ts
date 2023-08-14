@@ -1,4 +1,4 @@
-export interface ProductsFromCategoryAndQuery {
+export interface IProducts {
   site_id: string
   country_default_time_zone: string
   query: string

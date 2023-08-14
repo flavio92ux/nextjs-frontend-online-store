@@ -4,10 +4,11 @@ import { getProductsFromCategoryAndQuery } from '../services/api'
 import DropDownSvg from '../assets/img/DropdownSvg'
 import LupaSvg from '../assets/img/LupaSvg'
 import { ICategory } from '../interfaces/ICategories'
+import { IProducts } from '../interfaces/IProducts'
 
 interface IGroupForm {
   categories: ICategory[],
-  handleData: (data: string) => void
+  handleData: (data: IProducts) => void
 }
 
 export function GroupForm({ categories, handleData }: IGroupForm) {
@@ -28,7 +29,7 @@ export function GroupForm({ categories, handleData }: IGroupForm) {
     event.preventDefault()
 
     const data = await getProductsFromCategoryAndQuery(category, query)
-    handleData(JSON.stringify(data))
+    handleData(data)
   }
 
   return (

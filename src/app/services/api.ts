@@ -1,5 +1,5 @@
 import { ICategory } from "../interfaces/ICategories"
-import { ProductsFromCategoryAndQuery } from "../interfaces/productsFromCategoryAndQuery"
+import { IProducts } from "../interfaces/IProducts"
 
 export async function getCategories(): Promise<ICategory[]> {
   const response = await fetch('https://api.mercadolibre.com/sites/MLB/categories')
@@ -9,7 +9,7 @@ export async function getCategories(): Promise<ICategory[]> {
   return data
 }
 
-export async function getProductsFromCategoryAndQuery(categoryId: string, query: string): Promise<ProductsFromCategoryAndQuery> {
+export async function getProductsFromCategoryAndQuery(categoryId: string, query: string): Promise<IProducts> {
   const urlParams = new URLSearchParams({
     category: categoryId,
     q: query

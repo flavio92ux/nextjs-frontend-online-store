@@ -1,5 +1,5 @@
 'use client'
-import React, { FormEventHandler, useState } from 'react'
+import React, { useState } from 'react'
 import { getProductsFromCategoryAndQuery } from '../services/api'
 import DropDownSvg from '../assets/img/DropdownSvg'
 import LupaSvg from '../assets/img/LupaSvg'

@@ -1,4 +1,3 @@
-import { GroupForm } from './components/GroupForm'
 import { Painel } from './components/Painel';
 import { getCategories } from './services/api'
 import { ICategory } from './interfaces/ICategories';

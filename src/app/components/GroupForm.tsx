@@ -7,7 +7,7 @@ import { ICategory } from '../interfaces/ICategories'
 import { IProducts } from '../interfaces/IProducts'
 
 interface IGroupForm {
-  categories: ICategory[],
+  categories: ICategory[]
   handleData: (data: IProducts) => void
 }
 
@@ -52,7 +52,8 @@ export function GroupForm({ categories, handleData }: IGroupForm) {
                 dark:border-gray-600 
                 dark:placeholder-gray-400 
                 dark:text-white 
-                dark:focus:border-blue-500'>
+                dark:focus:border-blue-500'
+              >
                 {categories.map((category: ICategory) => (
                   <option
                     className='font-sans font-medium text-lg leading-5'

@@ -1,9 +1,13 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
 import voltarImg from '../assets/img/Voltar.png'
 import carrinhoImg from '../assets/img/carrinho.png'
 
 export default function ProductDetail() {
+  const product = localStorage.getItem('productDetail')
+  const productParsed = product && JSON.parse(product)
+
   return (
     <>
       <div className='flex justify-between'>
@@ -20,7 +24,7 @@ export default function ProductDetail() {
         </Link>
       </div>
 
-      <p className='font-bold'>Produto 1 - R$ XXX,XX</p>
+      <p className='font-bold'>{ productParsed.category_id } - R$ XXX,XX</p>
 
       <div className='flex flex-row gap-7'>
         <div className='w-[350px] h-[260px] border'></div>

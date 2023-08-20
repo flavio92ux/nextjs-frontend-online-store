@@ -25,12 +25,12 @@ export default function ProductDetail() {
       <div className='flex flex-row gap-7'>
         <div className='w-[350px] h-[260px] border'></div>
         <div className='w-[350px] h-[260px] border'>
-          <p className='font-bold'>Especificacoes técnicas</p>
+          <p className='font-bold'>Especificações técnicas</p>
           <ul className='ml-6 list-disc'>
-            <li>Especificacao 1</li>
-            <li>Especificacao 2</li>
-            <li>Especificacao 3</li>
-            <li>Especificacao 4</li>
+            <li>Especificação 1</li>
+            <li>Especificação 2</li>
+            <li>Especificação 3</li>
+            <li>Especificação 4</li>
           </ul>
         </div>
       </div>

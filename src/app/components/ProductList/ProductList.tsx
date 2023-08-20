@@ -1,5 +1,5 @@
-import { IProducts } from "@/app/interfaces/IProducts"
-import { ProductCard } from "./ProductCard"
+import { IProducts } from '@/app/interfaces/IProducts'
+import { ProductCard } from './ProductCard'
 
 interface IProductList {
   products: IProducts
@@ -7,8 +7,10 @@ interface IProductList {
 
 export function ProductList({ products }: IProductList) {
   return (
-    <div className="flex justify-center flex-wrap">
-      {products.results.map((product) => <ProductCard key={product.id} product={product} />)}
+    <div className='flex justify-center flex-wrap'>
+      {products.results.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
     </div>
   )
 }

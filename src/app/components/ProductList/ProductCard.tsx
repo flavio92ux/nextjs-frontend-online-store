@@ -1,21 +1,22 @@
 import { Result } from '@/app/interfaces/IProducts'
 import Image from 'next/image'
-import { useHistory } from "react-router-dom";
+import { useRouter } from 'next/navigation'
 
 interface IProductCard {
   product: Result
 }
 
-function HandleRoute(product: Result) {
-  localStorage.setItem('productDetail', JSON.stringify(product))
-  const router = useRouter()
-
-  router.push('/detalhe-produto')
-}
-
 export function ProductCard({ product }: IProductCard) {
+  const router = useRouter()
+  const handleClick = (e: any) => {
+    console.log(typeof e)
+    e.preventDefault()
+    localStorage.setItem('productDetail', JSON.stringify(product))
+    router.push('/detalhe-produto')
+  }
+
   return (
-    <button type='button' onClick={() => HandleRoute(product)}> 
+    <button type='button' onClick={handleClick}>
       <div className='w-[360px] h-[367px] bg-white rounded-[20px] shadow m-4'>
         <div className='p-[25px] justify-center items-center'>
           <p>{product.title}</p>

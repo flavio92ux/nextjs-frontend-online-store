@@ -6,6 +6,20 @@ interface IProductCard {
   product: Result
 }
 
+function addToCart(product: Result) {
+  const listProducts = localStorage.getItem('productCart')
+
+  const listProductsParsed = listProducts && JSON.parse(listProducts)
+
+  if (listProductsParsed) {
+    const arrayProducts = [...listProductsParsed.product, product]
+
+    localStorage.setItem('productCart', JSON.stringify({ product: arrayProducts } ))
+  } else {
+    localStorage.setItem('productCart', JSON.stringify({ product: [product] }))
+  }
+}
+
 export function ProductCard({ product }: IProductCard) {
   const router = useRouter()
   const handleClick = (e: any) => {
@@ -38,7 +52,7 @@ export function ProductCard({ product }: IProductCard) {
       </div>
 
       <div className='flex justify-center'>
-        <button className='border rounded px-6 py-1'>
+        <button onClick={() => addToCart(product)} className='border rounded px-6 py-1'>
           <span>Adicionar ao carrinho</span>
         </button>
       </div>

@@ -12,12 +12,15 @@ interface IGroupForm {
 }
 
 export function GroupForm({ categories, handleData }: IGroupForm) {
-  const [category, setCategory] = useState(categories[0].name)
-  const [query, setQuery] = useState('')
+  const [category, setCategory] = useState(categories[0].id)
+  const [query, setQuery] = useState(' ')
 
-  function handleCategory(event: React.ChangeEvent<HTMLSelectElement>) {
+  async function handleChange(event: React.ChangeEvent<HTMLSelectElement>) {
     event.preventDefault()
     setCategory(event.target.value)
+    const data = await getProductsFromCategoryAndQuery(category, query)
+    handleData(data)
+
   }
 
   function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
@@ -39,7 +42,7 @@ export function GroupForm({ categories, handleData }: IGroupForm) {
           <div className='inline-block w-[269px] bg-gray-100'>
             <div className='flex rounded h-10'>
               <select
-                onChange={handleCategory}
+                onChange={handleChange}
                 className='
                 w-full pl-4
                 text-sm
@@ -57,6 +60,7 @@ export function GroupForm({ categories, handleData }: IGroupForm) {
                 {categories.map((category: ICategory) => (
                   <option
                     className='font-sans font-medium text-lg leading-5'
+                    value={category.id}
                     key={category.id}
                   >
                     {category.name}
@@ -94,7 +98,6 @@ export function GroupForm({ categories, handleData }: IGroupForm) {
               dark:text-white 
               dark:focus:border-blue-500'
             placeholder='Search Mockups, Logos, Design Templates...'
-            required
           />
           <button
             type='submit'

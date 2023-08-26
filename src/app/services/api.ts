@@ -11,10 +11,7 @@ export async function getCategories(): Promise<ICategory[]> {
   return data;
 }
 
-export async function getProductsFromCategoryAndQuery(
-  categoryId: string,
-  query: string
-): Promise<IProducts> {
+export async function getProductsFromCategoryAndQuery(categoryId: string, query: string): Promise<IProducts> {
   const urlParams = new URLSearchParams({
     category: categoryId,
     q: query,
@@ -24,7 +21,7 @@ export async function getProductsFromCategoryAndQuery(
     "https://api.mercadolibre.com/sites/MLB/search?" + urlParams
   );
 
-  const data = response.json();
+  const data = await response.json();
 
   return data;
 }

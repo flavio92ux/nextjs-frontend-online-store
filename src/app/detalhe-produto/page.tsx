@@ -13,8 +13,6 @@ export default function ProductDetail() {
     const product = localStorage.getItem('productDetail')
     const productParsed = product && JSON.parse(product)
 
-    console.log(productParsed)
-
     setProductParsed(productParsed)
   }, [])
 

@@ -9,7 +9,6 @@ interface IProductCard {
 export function ProductCard({ product }: IProductCard) {
   const router = useRouter()
   const handleClick = (e: any) => {
-    console.log(typeof e)
     e.preventDefault()
     localStorage.setItem('productDetail', JSON.stringify(product))
     router.push('/detalhe-produto')

@@ -1,12 +1,30 @@
-interface AllCategories {
-  id: string;
-  name: string
+import { ICategory } from "../interfaces/ICategories";
+import { IProducts } from "../interfaces/IProducts";
+
+export async function getCategories(): Promise<ICategory[]> {
+  const response = await fetch(
+    "https://api.mercadolibre.com/sites/MLB/categories"
+  );
+
+  const data = response.json();
+
+  return data;
 }
 
-export async function getCategories(): Promise<AllCategories[]> {
-  const response = await fetch('https://api.mercadolibre.com/sites/MLB/categories')
+export async function getProductsFromCategoryAndQuery(
+  categoryId: string,
+  query: string
+): Promise<IProducts> {
+  const urlParams = new URLSearchParams({
+    category: categoryId,
+    q: query,
+  });
 
-  const data = response.json()
+  const response = await fetch(
+    "https://api.mercadolibre.com/sites/MLB/search?" + urlParams
+  );
 
-  return data
+  const data = response.json();
+
+  return data;
 }

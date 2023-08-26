@@ -3,10 +3,20 @@ import Image from 'next/image'
 import Link from 'next/link'
 import voltarImg from '../assets/img/Voltar.png'
 import carrinhoImg from '../assets/img/carrinho.png'
+import { useEffect, useState } from 'react'
+import { IProductDetail } from '../interfaces/IProductDetail'
 
 export default function ProductDetail() {
-  const product = localStorage.getItem('productDetail')
-  const productParsed = product && JSON.parse(product)
+  const [productParsed, setProductParsed] = useState<IProductDetail>()
+
+  useEffect(() => {
+    const product = localStorage.getItem('productDetail')
+    const productParsed = product && JSON.parse(product)
+
+    console.log(productParsed)
+
+    setProductParsed(productParsed)
+  }, [])
 
   return (
     <>
@@ -24,7 +34,11 @@ export default function ProductDetail() {
         </Link>
       </div>
 
-      <p className='font-bold'>{ productParsed.category_id } - R$ XXX,XX</p>
+      {!!productParsed && (
+        <p className='font-bold'>
+          {productParsed.category_id} - R$ {productParsed.price.toString().replace('.', ',')}
+        </p>
+      )}
 
       <div className='flex flex-row gap-7'>
         <div className='w-[350px] h-[260px] border'></div>
